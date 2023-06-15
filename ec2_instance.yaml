@@ -1,0 +1,28 @@
+Resources:
+  EC2Instance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c94855ba95b798c7 # Amazon Linux 2 LTS AMI
+      KeyName: your-key-pair-name
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          yum update -y
+          yum install -y python3
+          pip3 install -r requirements.txt
+          python3 script.py &
+
+  EC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c94855ba95b798c7 # Amazon Linux 2 LTS AMI
+      KeyName: your-key-pair-name
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          yum update -y
+          yum install -y mongodb-org
+          systemctl start mongod
+          systemctl enable mongod
