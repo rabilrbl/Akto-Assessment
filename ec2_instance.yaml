@@ -1,3 +1,5 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: EC2 instance with Python3 and MongoDB
 Resources:
   EC2Instance1:
     Type: AWS::EC2::Instance
